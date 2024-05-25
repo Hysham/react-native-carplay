@@ -97,6 +97,11 @@ class CarPlayModule internal constructor(private val reactContext: ReactApplicat
     eventEmitter?.didConnect()
   }
 
+  fun destroyCarplay(){
+    Log.d(TAG, "destroyCarplay")
+    eventEmitter?.didDisconnect()
+  }
+
   @ReactMethod
   fun createTemplate(templateId: String, config: ReadableMap, callback: Callback?) {
     handler.post {

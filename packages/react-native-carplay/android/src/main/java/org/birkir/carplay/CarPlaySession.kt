@@ -96,6 +96,10 @@ class CarPlaySession(private val reactInstanceManager: ReactInstanceManager) : S
     Log.i(TAG, "onDestroy")
     val context = carContext
     // stop services here, if any
+    val carModule = reactInstanceManager
+      .currentReactContext?.getNativeModule(CarPlayModule::class.java)
+
+    carModule?.destroyCarplay()
   }
 
   override fun onNewIntent(intent: Intent) {
